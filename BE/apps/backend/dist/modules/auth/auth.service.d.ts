@@ -4,14 +4,14 @@ export declare class AuthService {
         password: string;
         name: string;
     }): Promise<{
-        user: import("@supabase/supabase-js").AuthUser | null;
-        session: import("@supabase/supabase-js").AuthSession | null;
+        user: import("@supabase/auth-js").User | null;
+        session: import("@supabase/auth-js").Session | null;
     }>;
     login(data: {
         email: string;
         password: string;
     }): Promise<{
-        user: import("@supabase/supabase-js").AuthUser;
-        session: import("@supabase/supabase-js").AuthSession;
+        user: import("@supabase/auth-js").User;
+        session: import("@supabase/auth-js").Session;
     }>;
 }

@@ -4,7 +4,7 @@ export function getProjectById(id: string) {
     method: 'GET',
   });
 }
-const API_BASE_URL = 'http://localhost:5050';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5050';
 
 export async function apiCall(
   endpoint: string,
