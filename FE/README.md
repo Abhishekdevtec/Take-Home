@@ -1,36 +1,109 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+🚀 Project Management App (Full-Stack)
+This is a full-stack project management application built using a Turborepo monorepo architecture.
 
-## Getting Started
+It includes:
 
-First, run the development server:
+🧠 Backend (NestJS + Supabase Auth)
+🎨 Frontend (Next.js)
+📦 Shared monorepo tooling (Turbo, TypeScript, ESLint)
+📁 Project Structure
+root/
+  BE/
+    apps/
+      backend/        → NestJS API
+  apps/
+    web/              → Next.js frontend
+  packages/
+    ui/               → Shared UI components
+⚙️ Prerequisites
+Node.js ≥ 18
+npm / pnpm installed
+Supabase project configured (for auth)
+🔥 Backend Setup (MANDATORY)
+Backend must be started first.
 
-```bash
+cd BE/apps/backend
+npm install
 npm run dev
-# or
-yarn dev
-# or
+📍 Backend runs on:
+
+http://localhost:5050
+🎨 Frontend Setup
+In a new terminal:
+
+cd apps/web
+npm install
+npm run dev
+📍 Frontend runs on:
+
+http://localhost:3000
+🔗 Environment Variables
+Backend (BE/apps/backend/.env)
+SUPABASE_URL=your_url
+SUPABASE_KEY=your_key
+PORT=5050
+Frontend (apps/web/.env.local)
+NEXT_PUBLIC_API_URL=http://localhost:5050
+🔐 Authentication Notes
+Uses Supabase Auth
+
+For development:
+
+Disable email confirmation in Supabase
+Backend handles JWT validation
+
+🧪 Running Full Project (Optional - Turborepo)
+From root:
+
+npm install
+npm run dev
+Or with pnpm:
+
+pnpm install
 pnpm dev
-# or
-bun dev
-```
+📌 Features
+✅ Projects
+Create, update, delete projects
+View all projects (latest first)
+✅ Tasks
+Create tasks inside projects
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Filter by:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Status
+Priority
+Due date
+Mark tasks as done
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Prevent editing completed tasks
 
-## Learn More
+✅ UI/UX
+Clean card-based layout
+Responsive design
+Disabled states for completed tasks
+⚡ Tech Stack
+Frontend
+Next.js (App Router)
+Tailwind CSS
+Backend
+NestJS
+Supabase Auth
+Dev Tools
+Turborepo
+TypeScript
+ESLint + Prettier
+🚀 Production Notes
+Before deploying:
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Enable email confirmation in Supabase
+Use environment-based API URLs
+Secure backend routes with guards
+Add rate limiting
+🧩 Future Improvements
+🔄 React Query / SWR for data fetching
+🧠 Global state (Zustand)
+🔐 Refresh tokens
+📊 Analytics dashboard
+👥 Team collaboration
+👨‍💻 Author
+Built as a full-stack assignment project.
