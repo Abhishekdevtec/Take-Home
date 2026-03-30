@@ -1,159 +1,109 @@
-# Turborepo starter
+🚀 Project Management App (Full-Stack)
+This is a full-stack project management application built using a Turborepo monorepo architecture.
 
-This Turborepo starter is maintained by the Turborepo core team.
+It includes:
 
-## Using this example
+🧠 Backend (NestJS + Supabase Auth)
+🎨 Frontend (Next.js)
+📦 Shared monorepo tooling (Turbo, TypeScript, ESLint)
+📁 Project Structure
+root/
+  BE/
+    apps/
+      backend/        → NestJS API
+  apps/
+    web/              → Next.js frontend
+  packages/
+    ui/               → Shared UI components
+⚙️ Prerequisites
+Node.js ≥ 18
+npm / pnpm installed
+Supabase project configured (for auth)
+🔥 Backend Setup (MANDATORY)
+Backend must be started first.
 
-Run the following command:
+cd BE/apps/backend
+npm install
+npm run dev
+📍 Backend runs on:
 
-```sh
-npx create-turbo@latest
-```
+http://localhost:5050
+🎨 Frontend Setup
+In a new terminal:
 
-## What's inside?
+cd apps/web
+npm install
+npm run dev
+📍 Frontend runs on:
 
-This Turborepo includes the following packages/apps:
+http://localhost:3000
+🔗 Environment Variables
+Backend (BE/apps/backend/.env)
+SUPABASE_URL=your_url
+SUPABASE_KEY=your_key
+PORT=5050
+Frontend (apps/web/.env.local)
+NEXT_PUBLIC_API_URL=http://localhost:5050
+🔐 Authentication Notes
+Uses Supabase Auth
 
-### Apps and Packages
+For development:
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+Disable email confirmation in Supabase
+Backend handles JWT validation
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+🧪 Running Full Project (Optional - Turborepo)
+From root:
 
-### Utilities
+npm install
+npm run dev
+Or with pnpm:
 
-This Turborepo has some additional tools already setup for you:
+pnpm install
+pnpm dev
+📌 Features
+✅ Projects
+Create, update, delete projects
+View all projects (latest first)
+✅ Tasks
+Create tasks inside projects
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
+Filter by:
 
-### Build
+Status
+Priority
+Due date
+Mark tasks as done
 
-To build all apps and packages, run the following command:
+Prevent editing completed tasks
 
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended):
+✅ UI/UX
+Clean card-based layout
+Responsive design
+Disabled states for completed tasks
+⚡ Tech Stack
+Frontend
+Next.js (App Router)
+Tailwind CSS
+Backend
+NestJS
+Supabase Auth
+Dev Tools
+Turborepo
+TypeScript
+ESLint + Prettier
+🚀 Production Notes
+Before deploying:
 
-```sh
-cd my-turborepo
-turbo build
-```
-
-Without global `turbo`, use your package manager:
-
-```sh
-cd my-turborepo
-npx turbo build
-yarn dlx turbo build
-pnpm exec turbo build
-```
-
-You can build a specific package by using a [filter](https://turborepo.dev/docs/crafting-your-repository/running-tasks#using-filters):
-
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed:
-
-```sh
-turbo build --filter=docs
-```
-
-Without global `turbo`:
-
-```sh
-npx turbo build --filter=docs
-yarn exec turbo build --filter=docs
-pnpm exec turbo build --filter=docs
-```
-
-### Develop
-
-To develop all apps and packages, run the following command:
-
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended):
-
-```sh
-cd my-turborepo
-turbo dev
-```
-
-Without global `turbo`, use your package manager:
-
-```sh
-cd my-turborepo
-npx turbo dev
-yarn exec turbo dev
-pnpm exec turbo dev
-```
-
-You can develop a specific package by using a [filter](https://turborepo.dev/docs/crafting-your-repository/running-tasks#using-filters):
-
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed:
-
-```sh
-turbo dev --filter=web
-```
-
-Without global `turbo`:
-
-```sh
-npx turbo dev --filter=web
-yarn exec turbo dev --filter=web
-pnpm exec turbo dev --filter=web
-```
-
-### Remote Caching
-
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
-
-Turborepo can use a technique known as [Remote Caching](https://turborepo.dev/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
-
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended):
-
-```sh
-cd my-turborepo
-turbo login
-```
-
-Without global `turbo`, use your package manager:
-
-```sh
-cd my-turborepo
-npx turbo login
-yarn exec turbo login
-pnpm exec turbo login
-```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed:
-
-```sh
-turbo link
-```
-
-Without global `turbo`:
-
-```sh
-npx turbo link
-yarn exec turbo link
-pnpm exec turbo link
-```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turborepo.dev/docs/crafting-your-repository/running-tasks)
-- [Caching](https://turborepo.dev/docs/crafting-your-repository/caching)
-- [Remote Caching](https://turborepo.dev/docs/core-concepts/remote-caching)
-- [Filtering](https://turborepo.dev/docs/crafting-your-repository/running-tasks#using-filters)
-- [Configuration Options](https://turborepo.dev/docs/reference/configuration)
-- [CLI Usage](https://turborepo.dev/docs/reference/command-line-reference)
+Enable email confirmation in Supabase
+Use environment-based API URLs
+Secure backend routes with guards
+Add rate limiting
+🧩 Future Improvements
+🔄 React Query / SWR for data fetching
+🧠 Global state (Zustand)
+🔐 Refresh tokens
+📊 Analytics dashboard
+👥 Team collaboration
+👨‍💻 Author
+Built as a full-stack assignment project.
